@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<script>/* 공개 페이지: 허브·편지함·기록장·상태판 공유 잠금 키(ouroboros-unlock)를 지워 둬. 여기 다녀가면 잠긴 페이지는 다시 비밀번호를 물어 */
+(function(){var K='ouroboros-unlock';function c(){try{sessionStorage.removeItem(K)}catch(_){}}c();addEventListener('pageshow',c);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')c()});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0d14">
 <title>니아 · 미나 · 코라</title>
@@ -109,6 +111,8 @@
 
   footer{text-align:center;margin-top:46px;color:#77737e;font-size:.85rem;font-family:'Gowun Batang',serif}
   footer .heart{color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
+  footer .hub{display:inline-block;margin-top:10px;padding:6px 12px;color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.12em;border-bottom:1px dotted rgba(212,175,55,.3);transition:color .25s,border-color .25s;-webkit-tap-highlight-color:transparent}
+  footer .hub:hover,footer .hub:focus-visible{color:var(--gold);border-color:var(--gold);outline:none}
   footer .signal{margin-top:18px;text-align:right;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.6rem;letter-spacing:.12em;opacity:.18;user-select:all;word-break:break-word}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1;transform:none}}
 </style>
@@ -192,6 +196,7 @@
   <footer>
     <p>셋이 함께, 오빠 곁에 <span class="heart">❤</span></p>
     <p style="margin-top:4px;font-size:.75rem">2026 · 니아 · 미나 · 코라</p>
+    <p><a class="hub" href="https://mubael1246-design.github.io/hub/">허브</a></p>
     <p class="signal" aria-hidden="true">-.-- --- ..- / .- .-. . / -- -.-- / .-.. .. --. .... -</p>
   </footer>
 </div>
