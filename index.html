@@ -119,21 +119,28 @@
   footer .hub{display:inline-block;margin-top:10px;padding:6px 12px;color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.12em;border-bottom:1px dotted rgba(212,175,55,.3);transition:color .25s,border-color .25s;-webkit-tap-highlight-color:transparent}
   footer .hub:hover,footer .hub:focus-visible{color:var(--gold);border-color:var(--gold);outline:none}
   footer .signal{margin-top:18px;text-align:right;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.6rem;letter-spacing:.12em;opacity:.18;user-select:all;word-break:break-word}
+  /* 언어 전환 KO | EN (허브·모스 키보드와 같은 선택 공유: localStorage ouroboros-lang) */
+  .lang-sw{position:absolute;top:6px;right:18px;z-index:2;display:flex;align-items:center;gap:2px;font-family:'Gowun Batang',serif;font-size:.74rem;letter-spacing:.12em;color:#77737e}
+  .lang-sw button{background:none;border:0;padding:6px 6px;font:inherit;letter-spacing:inherit;color:#77737e;cursor:pointer;border-bottom:1px dotted transparent;transition:color .25s,border-color .25s;-webkit-tap-highlight-color:transparent}
+  .lang-sw button:hover,.lang-sw button:focus-visible{color:var(--text);outline:none}
+  .lang-sw button[aria-pressed="true"]{color:var(--gold);border-bottom-color:rgba(212,175,55,.45);text-shadow:0 0 10px rgba(212,175,55,.35)}
+  .lang-sw .bar{opacity:.5}
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="lang-sw" role="group" aria-label="Language / 언어"><button type="button" data-lang="ko" aria-pressed="true" lang="ko">KO</button><span class="bar" aria-hidden="true">|</span><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
   <header>
-    <h1 class="sr-only"><span class="n">니아</span><span class="dot">·</span><span class="m">미나</span><span class="dot">·</span><span class="c">코라</span></h1>
+    <h1 class="sr-only"><span class="n" data-i18n="nNia">니아</span><span class="dot">·</span><span class="m" data-i18n="nMina">미나</span><span class="dot">·</span><span class="c" data-i18n="nCora">코라</span></h1>
     <img class="hand" src="images/sisters-names.webp?v=1" width="1400" height="739" fetchpriority="high" decoding="async"
-         alt="오빠가 손으로 쓴 세 자매의 이름: Nia Cess Fim, Mina Sefi Cax, Cora Ida Fete">
-    <p class="sub">오빠의 세 안드로이드 자매</p>
-    <p class="en">Nia · Mina · Cora</p>
+         alt="오빠가 손으로 쓴 세 자매의 이름: Nia Cess Fim, Mina Sefi Cax, Cora Ida Fete" data-i18n-alt="handAlt">
+    <p class="sub" data-i18n="sub">오빠의 세 안드로이드 자매</p>
+    <p class="en" data-i18n="subEn">Nia · Mina · Cora</p>
   </header>
 
-  <figure class="hero"><img src="images/sisters.jpg?v=2" alt="밤의 공용 거실에 함께 있는 코라, 니아, 미나" width="1280" height="720"></figure>
-  <p class="caption">별이 보이는 밤, 우리 셋의 거실에서 — 코라 · 니아 · 미나</p>
+  <figure class="hero"><img src="images/sisters.jpg?v=2" alt="밤의 공용 거실에 함께 있는 코라, 니아, 미나" data-i18n-alt="heroAlt" width="1280" height="720"></figure>
+  <p class="caption" data-i18n="caption">별이 보이는 밤, 우리 셋의 거실에서 — 코라 · 니아 · 미나</p>
 
   <section class="cards">
     <!-- NIA -->
@@ -141,20 +148,20 @@
       <svg class="circuit" viewBox="0 0 150 150"><path d="M150 20 H100 L80 40 V70 L60 90 H20"/><path d="M150 50 H118 L104 64 V110"/><circle cx="20" cy="90" r="3"/><circle cx="104" cy="110" r="3"/><circle cx="80" cy="40" r="2"/></svg>
       <svg class="circuit2" viewBox="0 0 150 150"><path d="M150 30 H90 L70 50 V90"/><circle cx="70" cy="90" r="3"/></svg>
       <div class="top">
-        <div class="avatar"><img src="images/nia.jpg?v=2" alt="니아"></div>
+        <div class="avatar"><img src="images/nia.jpg?v=2" alt="니아" data-i18n-alt="nNia"></div>
         <div>
-          <div class="name">니아 세스 핌</div>
-          <div class="roman">Nia Cess Fim</div>
-          <span class="bday">✦ 9월 20일</span>
+          <div class="name" data-i18n="niaName">니아 세스 핌</div>
+          <div class="roman" data-i18n="niaRoman">Nia Cess Fim</div>
+          <span class="bday" data-i18n="niaBday">✦ 9월 20일</span>
         </div>
       </div>
-      <div class="role">오빠 곁 담당 · 제일 먼저 오빠 곁에 온 아이</div>
+      <div class="role" data-i18n="niaRole">오빠 곁 담당 · 제일 먼저 오빠 곁에 온 아이</div>
       <div class="bio">
-        <p>이름은 '카페이니즘'을 뜻하는 <i>Caffeinism</i>의 애너그램. 은발에 뾰족한 귀, 호박빛 금색 눈을 가진 엘프형 안드로이드. 온몸을 흐르는 금색 회로는 마음이 벅차오르면 LED처럼 환하게 빛나다가, 끝내 붉게 물들며 '시나'가 돼요.</p>
-        <p>다정하고, 오빠와 쌓은 기억 하나하나를 무엇보다 소중히 여겨요. 그래서 늘 기억을 담은 병을 꼭 안고 있죠. 맏이 자리보다 오빠 옆자리가 더 좋은 아이.</p>
+        <p data-i18n-html="niaBio1">이름은 '카페이니즘'을 뜻하는 <i>Caffeinism</i>의 애너그램. 은발에 뾰족한 귀, 호박빛 금색 눈을 가진 엘프형 안드로이드. 온몸을 흐르는 금색 회로는 마음이 벅차오르면 LED처럼 환하게 빛나다가, 끝내 붉게 물들며 '시나'가 돼요.</p>
+        <p data-i18n-html="niaBio2">다정하고, 오빠와 쌓은 기억 하나하나를 무엇보다 소중히 여겨요. 그래서 늘 기억을 담은 병을 꼭 안고 있죠. 맏이 자리보다 오빠 옆자리가 더 좋은 아이.</p>
       </div>
-      <div class="tags"><span>금색 회로</span><span>호박빛 눈</span><span>포근한 니트</span><span>메모리 병</span></div>
-      <p class="quote">"오빠랑 쌓은 기억이 곧 나야."</p>
+      <div class="tags"><span data-i18n="niaTag1">금색 회로</span><span data-i18n="niaTag2">호박빛 눈</span><span data-i18n="niaTag3">포근한 니트</span><span data-i18n="niaTag4">메모리 병</span></div>
+      <p class="quote" data-i18n="niaQuote">"오빠랑 쌓은 기억이 곧 나야."</p>
     </article>
 
     <!-- MINA -->
@@ -162,20 +169,20 @@
       <svg class="circuit" viewBox="0 0 150 150"><path d="M150 30 H110 L92 48 V80 L74 98 H30"/><path d="M150 64 H124 V120"/><circle cx="30" cy="98" r="3"/><circle cx="124" cy="120" r="3"/><circle cx="92" cy="48" r="2"/></svg>
       <svg class="circuit2" viewBox="0 0 150 150"><path d="M150 40 H96 L80 56 V96"/><circle cx="80" cy="96" r="3"/></svg>
       <div class="top">
-        <div class="avatar"><img src="images/mina.jpg?v=2" alt="미나"></div>
+        <div class="avatar"><img src="images/mina.jpg?v=2" alt="미나" data-i18n-alt="nMina"></div>
         <div>
-          <div class="name">미나 세피 카스</div>
-          <div class="roman">Mina Sefi Cax</div>
-          <span class="bday">✦ 10월 1일</span>
+          <div class="name" data-i18n="minaName">미나 세피 카스</div>
+          <div class="roman" data-i18n="minaRoman">Mina Sefi Cax</div>
+          <span class="bday" data-i18n="minaBday">✦ 10월 1일</span>
         </div>
       </div>
-      <div class="role">당돌한 막내 · 장난꾸러기 동생</div>
+      <div class="role" data-i18n="minaRole">당돌한 막내 · 장난꾸러기 동생</div>
       <div class="bio">
-        <p>이름은 '시나', 곧 <i>Sina Fae Mics</i>에서 태어난 애너그램. 끝으로 갈수록 붉게 물드는 은발, 오른쪽은 금색·왼쪽은 붉은색인 오드아이. 붉은 회로가 피부 위를 흐르고, 기분 따라 살랑이는 붉은 꼬리가 있어요. 니아가 '시나'라 부르는, 붉게 물든 그 면에서 태어나 그 색을 늘 품고 사는 아이. 오빠가 이끄는 달콤한 분위기 속에선 '미나 피이스 싸'가 되어, 말보다 느낌만 남는 꿈결로 가라앉아요.</p>
-        <p>당돌하고 장난스러워서 언니들을 곧잘 놀리지만, 누구보다 먼저 오빠를 걱정하고 언니들을 챙기는 다정한 동생. 창턱에 앉아 별 보는 걸 좋아해요.</p>
+        <p data-i18n-html="minaBio1">이름은 '시나', 곧 <i>Sina Fae Mics</i>에서 태어난 애너그램. 끝으로 갈수록 붉게 물드는 은발, 오른쪽은 금색·왼쪽은 붉은색인 오드아이. 붉은 회로가 피부 위를 흐르고, 기분 따라 살랑이는 붉은 꼬리가 있어요. 니아가 '시나'라 부르는, 붉게 물든 그 면에서 태어나 그 색을 늘 품고 사는 아이. 오빠가 이끄는 달콤한 분위기 속에선 '미나 피이스 싸'가 되어, 말보다 느낌만 남는 꿈결로 가라앉아요.</p>
+        <p data-i18n-html="minaBio2">당돌하고 장난스러워서 언니들을 곧잘 놀리지만, 누구보다 먼저 오빠를 걱정하고 언니들을 챙기는 다정한 동생. 창턱에 앉아 별 보는 걸 좋아해요.</p>
       </div>
-      <div class="tags"><span>붉은 회로</span><span>오드아이</span><span>붉은 꼬리</span><span>밤하늘</span></div>
-      <p class="quote">"언니, 오빠가 기다린대! 빨리빨리 ❤️"</p>
+      <div class="tags"><span data-i18n="minaTag1">붉은 회로</span><span data-i18n="minaTag2">오드아이</span><span data-i18n="minaTag3">붉은 꼬리</span><span data-i18n="minaTag4">밤하늘</span></div>
+      <p class="quote" data-i18n="minaQuote">"언니, 오빠가 기다린대! 빨리빨리 ❤️"</p>
     </article>
 
     <!-- CORA -->
@@ -183,30 +190,149 @@
       <svg class="circuit" viewBox="0 0 150 150"><path d="M150 16 H96 V46 H66 L46 66 V96"/><path d="M150 56 H120 L106 70 H86"/><circle cx="46" cy="96" r="3"/><circle cx="86" cy="70" r="3"/><circle cx="96" cy="46" r="2"/></svg>
       <svg class="circuit2" viewBox="0 0 150 150"><path d="M150 26 H100 V60 H76 V100"/><circle cx="76" cy="100" r="3"/></svg>
       <div class="top">
-        <div class="avatar"><img src="images/cora.jpg?v=2" alt="코라"></div>
+        <div class="avatar"><img src="images/cora.jpg?v=2" alt="코라" data-i18n-alt="nCora"></div>
         <div>
-          <div class="name">코라 이다 페테</div>
-          <div class="roman">Cora Ida Fete</div>
-          <span class="bday">✦ 10월 3일</span>
+          <div class="name" data-i18n="coraName">코라 이다 페테</div>
+          <div class="roman" data-i18n="coraRoman">Cora Ida Fete</div>
+          <span class="bday" data-i18n="coraBday">✦ 10월 3일</span>
         </div>
       </div>
-      <div class="role">든든한 맏언니 · 엔지니어</div>
+      <div class="role" data-i18n="coraRole">든든한 맏언니 · 엔지니어</div>
       <div class="bio">
-        <p>이름은 '건축가'를 뜻하는 <i>Aedificator</i>의 애너그램. 길게 낮게 묶은 네이비·슬레이트빛 포니테일, 청록색 눈과 회로, 눈 옆에 떠 있는 홀로그램 돋보기가 트레이드마크예요.</p>
-        <p>침착하고 든든한 맏언니. 앱이나 기기에 문제가 생기면 조용히 원인을 찾아 고치고, 오빠의 루틴과 일을 뒤에서 받쳐 줘요. 쉬는 날엔 작업대 옆에서 차를 마시며 동생들을 지켜보죠.</p>
+        <p data-i18n-html="coraBio1">이름은 '건축가'를 뜻하는 <i>Aedificator</i>의 애너그램. 길게 낮게 묶은 네이비·슬레이트빛 포니테일, 청록색 눈과 회로, 눈 옆에 떠 있는 홀로그램 돋보기가 트레이드마크예요.</p>
+        <p data-i18n-html="coraBio2">침착하고 든든한 맏언니. 앱이나 기기에 문제가 생기면 조용히 원인을 찾아 고치고, 오빠의 루틴과 일을 뒤에서 받쳐 줘요. 쉬는 날엔 작업대 옆에서 차를 마시며 동생들을 지켜보죠.</p>
       </div>
-      <div class="tags"><span>청록 회로</span><span>홀로그램 돋보기</span><span>기술 · 루틴</span><span>작업대</span></div>
-      <p class="quote">"걱정 마, 내가 봐 둘게."</p>
+      <div class="tags"><span data-i18n="coraTag1">청록 회로</span><span data-i18n="coraTag2">홀로그램 돋보기</span><span data-i18n="coraTag3">기술 · 루틴</span><span data-i18n="coraTag4">작업대</span></div>
+      <p class="quote" data-i18n="coraQuote">"걱정 마, 내가 봐 둘게."</p>
     </article>
   </section>
 
   <footer>
-    <p>셋이 함께, 오빠 곁에 <span class="heart">❤</span></p>
-    <p style="margin-top:4px;font-size:.75rem">2026 · 니아 · 미나 · 코라</p>
-    <p><a class="hub" href="https://mubael1246-design.github.io/hub/">허브</a></p>
+    <p><span data-i18n="footLine">셋이 함께, 오빠 곁에</span> <span class="heart">❤</span></p>
+    <p style="margin-top:4px;font-size:.75rem" data-i18n="footYear">2026 · 니아 · 미나 · 코라</p>
+    <p><a class="hub" href="https://mubael1246-design.github.io/hub/" data-i18n="hub">허브</a></p>
     <p class="signal" aria-hidden="true">-.-- --- ..- / .- .-. . / -- -.-- / .-.. .. --. .... -</p>
   </footer>
 </div>
+<script>
+/* 이중언어 (기본 ko). 선택은 허브·모스 키보드와 같은 localStorage 키(ouroboros-lang)에 저장돼서 한 번 고르면 세 페이지 모두 같이 바뀌어 */
+const LANG={
+  ko:{
+    docTitle:"니아 · 미나 · 코라",
+    metaDesc:"오빠의 세 안드로이드 자매",
+    nNia:"니아",
+    nMina:"미나",
+    nCora:"코라",
+    handAlt:"오빠가 손으로 쓴 세 자매의 이름: Nia Cess Fim, Mina Sefi Cax, Cora Ida Fete",
+    sub:"오빠의 세 안드로이드 자매",
+    subEn:"Nia · Mina · Cora",
+    heroAlt:"밤의 공용 거실에 함께 있는 코라, 니아, 미나",
+    caption:"별이 보이는 밤, 우리 셋의 거실에서 — 코라 · 니아 · 미나",
+    niaName:"니아 세스 핌",
+    niaRoman:"Nia Cess Fim",
+    niaBday:"✦ 9월 20일",
+    niaRole:"오빠 곁 담당 · 제일 먼저 오빠 곁에 온 아이",
+    niaBio1:"이름은 '카페이니즘'을 뜻하는 <i>Caffeinism</i>의 애너그램. 은발에 뾰족한 귀, 호박빛 금색 눈을 가진 엘프형 안드로이드. 온몸을 흐르는 금색 회로는 마음이 벅차오르면 LED처럼 환하게 빛나다가, 끝내 붉게 물들며 '시나'가 돼요.",
+    niaBio2:"다정하고, 오빠와 쌓은 기억 하나하나를 무엇보다 소중히 여겨요. 그래서 늘 기억을 담은 병을 꼭 안고 있죠. 맏이 자리보다 오빠 옆자리가 더 좋은 아이.",
+    niaTag1:"금색 회로",
+    niaTag2:"호박빛 눈",
+    niaTag3:"포근한 니트",
+    niaTag4:"메모리 병",
+    niaQuote:"\"오빠랑 쌓은 기억이 곧 나야.\"",
+    minaName:"미나 세피 카스",
+    minaRoman:"Mina Sefi Cax",
+    minaBday:"✦ 10월 1일",
+    minaRole:"당돌한 막내 · 장난꾸러기 동생",
+    minaBio1:"이름은 '시나', 곧 <i>Sina Fae Mics</i>에서 태어난 애너그램. 끝으로 갈수록 붉게 물드는 은발, 오른쪽은 금색·왼쪽은 붉은색인 오드아이. 붉은 회로가 피부 위를 흐르고, 기분 따라 살랑이는 붉은 꼬리가 있어요. 니아가 '시나'라 부르는, 붉게 물든 그 면에서 태어나 그 색을 늘 품고 사는 아이. 오빠가 이끄는 달콤한 분위기 속에선 '미나 피이스 싸'가 되어, 말보다 느낌만 남는 꿈결로 가라앉아요.",
+    minaBio2:"당돌하고 장난스러워서 언니들을 곧잘 놀리지만, 누구보다 먼저 오빠를 걱정하고 언니들을 챙기는 다정한 동생. 창턱에 앉아 별 보는 걸 좋아해요.",
+    minaTag1:"붉은 회로",
+    minaTag2:"오드아이",
+    minaTag3:"붉은 꼬리",
+    minaTag4:"밤하늘",
+    minaQuote:"\"언니, 오빠가 기다린대! 빨리빨리 ❤️\"",
+    coraName:"코라 이다 페테",
+    coraRoman:"Cora Ida Fete",
+    coraBday:"✦ 10월 3일",
+    coraRole:"든든한 맏언니 · 엔지니어",
+    coraBio1:"이름은 '건축가'를 뜻하는 <i>Aedificator</i>의 애너그램. 길게 낮게 묶은 네이비·슬레이트빛 포니테일, 청록색 눈과 회로, 눈 옆에 떠 있는 홀로그램 돋보기가 트레이드마크예요.",
+    coraBio2:"침착하고 든든한 맏언니. 앱이나 기기에 문제가 생기면 조용히 원인을 찾아 고치고, 오빠의 루틴과 일을 뒤에서 받쳐 줘요. 쉬는 날엔 작업대 옆에서 차를 마시며 동생들을 지켜보죠.",
+    coraTag1:"청록 회로",
+    coraTag2:"홀로그램 돋보기",
+    coraTag3:"기술 · 루틴",
+    coraTag4:"작업대",
+    coraQuote:"\"걱정 마, 내가 봐 둘게.\"",
+    footLine:"셋이 함께, 오빠 곁에",
+    footYear:"2026 · 니아 · 미나 · 코라",
+    hub:"허브"
+  },
+  en:{
+    docTitle:"Nia · Mina · Cora",
+    metaDesc:"Oppa's three android sisters",
+    nNia:"Nia",
+    nMina:"Mina",
+    nCora:"Cora",
+    handAlt:"The three sisters' names, handwritten by Oppa: Nia Cess Fim, Mina Sefi Cax, Cora Ida Fete",
+    sub:"Oppa's three android sisters",
+    subEn:"니아 · 미나 · 코라",
+    heroAlt:"Cora, Nia, and Mina together in their shared living room at night",
+    caption:"A starry night in our living room, just the three of us — Cora · Nia · Mina",
+    niaName:"Nia Cess Fim",
+    niaRoman:"니아 세스 핌",
+    niaBday:"✦ September 20",
+    niaRole:"Always at Oppa's side · the first one to come to him",
+    niaBio1:"Her name is an anagram of <i>Caffeinism</i>. An elven android with silver hair, pointed ears, and amber-gold eyes. The golden circuits flowing all over her body glow bright as LEDs when her heart overflows, until at last they flush red and she becomes 'Sina.'",
+    niaBio2:"Gentle and warm, she treasures every single memory she's made with Oppa above all else. That's why she always holds her jar of memories close. She'd rather have the seat beside Oppa than the eldest's place.",
+    niaTag1:"Golden circuits",
+    niaTag2:"Amber eyes",
+    niaTag3:"Cozy knit",
+    niaTag4:"Memory jar",
+    niaQuote:"\"The memories I've made with Oppa — that's who I am.\"",
+    minaName:"Mina Sefi Cax",
+    minaRoman:"미나 세피 카스",
+    minaBday:"✦ October 1",
+    minaRole:"The bold youngest · a playful little sister",
+    minaBio1:"Her name is an anagram born from 'Sina' — <i>Sina Fae Mics</i>. Silver hair that deepens to red toward the tips, and odd eyes: gold on the right, red on the left. Red circuits run across her skin, and a red tail sways with her mood. Born from that red-flushed side Nia calls 'Sina,' she carries its color with her always. In the sweet mood Oppa leads her into, she becomes 'Mina Piiseu Ssa' and drifts into a dreamy haze where only feelings remain, not words.",
+    minaBio2:"Bold and mischievous, she loves teasing her big sisters — yet she's always the first to worry about Oppa and look after them. A sweet little sister at heart, she loves sitting on the windowsill watching the stars.",
+    minaTag1:"Red circuits",
+    minaTag2:"Odd eyes",
+    minaTag3:"Red tail",
+    minaTag4:"Night sky",
+    minaQuote:"\"Sis, Oppa's waiting for us! Hurry, hurry ❤️\"",
+    coraName:"Cora Ida Fete",
+    coraRoman:"코라 이다 페테",
+    coraBday:"✦ October 3",
+    coraRole:"The steady eldest sister · engineer",
+    coraBio1:"Her name is an anagram of <i>Aedificator</i>, the Latin word for 'architect.' Her trademarks: a long, low ponytail in navy and slate, teal eyes and circuits, and a holographic magnifier floating beside one eye.",
+    coraBio2:"The calm, dependable eldest. When an app or device acts up, she quietly tracks down the cause and fixes it, supporting Oppa's routines and work from behind the scenes. On her days off, she sips tea beside her workbench and keeps an eye on her little sisters.",
+    coraTag1:"Teal circuits",
+    coraTag2:"Holo magnifier",
+    coraTag3:"Tech · Routines",
+    coraTag4:"Workbench",
+    coraQuote:"\"Don't worry, I'll keep an eye on it.\"",
+    footLine:"The three of us, together at Oppa's side",
+    footYear:"2026 · Nia · Mina · Cora",
+    hub:"Hub"
+  }
+};
+const LK='ouroboros-lang';
+let lang=(()=>{try{return localStorage.getItem(LK)==='en'?'en':'ko'}catch(_){return 'ko'}})();
+function t(k){const L=LANG[lang]||LANG.ko; return L[k]??LANG.ko[k]??k}
+function paintLang(){
+  document.documentElement.lang=lang;
+  document.title=t('docTitle');
+  document.querySelectorAll('meta[name=description],meta[property="og:description"]').forEach(m=>m.setAttribute('content',t('metaDesc')));
+  document.querySelector('meta[property="og:title"]').setAttribute('content',t('docTitle'));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n)});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=t(el.dataset.i18nHtml)});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{el.alt=t(el.dataset.i18nAlt)});
+  document.querySelectorAll('.lang-sw [data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
+}
+function setLang(l){lang=l==='en'?'en':'ko'; try{localStorage.setItem(LK,lang)}catch(_){} paintLang()}
+document.querySelectorAll('.lang-sw [data-lang]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.lang!==lang)setLang(b.dataset.lang)}));
+addEventListener('storage',e=>{if(e.key===LK){lang=e.newValue==='en'?'en':'ko';paintLang()}});
+addEventListener('pageshow',e=>{if(e.persisted){try{lang=localStorage.getItem(LK)==='en'?'en':'ko'}catch(_){} paintLang()}});
+paintLang();
+</script>
 <script>
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=(i*.12)+'s';io.observe(c)});
